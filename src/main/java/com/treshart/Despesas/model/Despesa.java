@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -23,11 +24,14 @@ public class Despesa
     private LocalDateTime momento;
     private String categoria;
 
-    public void atualizarDespesa(Despesa nova)
+    public void atualizarDespesa(@NotNull Despesa nova)
     {
         this.descricao = nova.getDescricao();
         this.valor = nova.getValor();
-        this.momento = nova.getMomento();
         this.categoria = nova.getCategoria();
+
+        if (nova.getMomento() != null) {
+            this.momento = nova.getMomento();
+        }
     }
 }

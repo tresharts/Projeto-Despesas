@@ -124,6 +124,8 @@ public class DespesaService
         if (!repository.existsById(id)) {
             throw new IdNaoEncontradoException("ID: " + id + " não encontrado.");
         }
+
+        repository.deleteById(id);
     }
 
     public ResumoDTO resumo(List<Despesa> despesas)

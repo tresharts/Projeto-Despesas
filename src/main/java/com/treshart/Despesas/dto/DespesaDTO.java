@@ -18,6 +18,7 @@ public class DespesaDTO
 
     public DespesaDTO(Despesa despesa)
     {
+        this.id = despesa.getId();
         this.descricao = despesa.getDescricao();
         this.valor = despesa.getValor();
         this.momento = despesa.getMomento();
