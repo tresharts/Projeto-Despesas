@@ -15,7 +15,7 @@ API para gerenciamento de despesas pessoais, construída com Java e Spring Boot
 - CRUD completo de despesas
 - Filtros e buscas
 
-## ⚙️ Observações sobre o banco
+## ⚙️ Sobre o banco
 - O projeto já está configurado para rodar no perfil dev com application.yml e application-dev.yml.
 - Banco local deve estar ativo e configurado conforme application-dev.yml.
 - O deploy em produção já está disponível no Railway; não é necessário rodar produção localmente.
