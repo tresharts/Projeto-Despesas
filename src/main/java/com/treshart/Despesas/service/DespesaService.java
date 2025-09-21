@@ -46,7 +46,7 @@ public class DespesaService
     {
         List<Despesa> despesas = repository.findByCategoria(categoria);
 
-        return resumo(despesas);
+        return resumo(despesas, categoria);
     }
 
     public ResumoDTO buscarPorDia(int ano, int mes, int dia)
@@ -57,7 +57,7 @@ public class DespesaService
 
         List<Despesa> despesas = repository.findByMomentoBetween(inicio, fim);
 
-        return resumo(despesas);
+        return resumo(despesas, null);
     }
 
     public ResumoDTO buscarPorMes(int ano, int mes)
@@ -74,7 +74,7 @@ public class DespesaService
 
         List<Despesa> despesas = repository.findByMomentoBetween(inicio, fim);
 
-        return resumo(despesas);
+        return resumo(despesas, null);
     }
 
     public ResumoDTO buscarPorAno(int ano)
@@ -84,7 +84,7 @@ public class DespesaService
 
         List<Despesa> despesas = repository.findByMomentoBetween(inicio, fim);
 
-        return resumo(despesas);
+        return resumo(despesas, null);
     }
 
     public List<Despesa> buscarPorValorMinimo(double valor)
@@ -128,7 +128,7 @@ public class DespesaService
         repository.deleteById(id);
     }
 
-    public ResumoDTO resumo(List<Despesa> despesas)
+    public ResumoDTO resumo(List<Despesa> despesas, String categoria)
     {
         BigDecimal total = total(despesas);
         List<DespesaDTO> lista = despesas
@@ -136,7 +136,7 @@ public class DespesaService
                 .map(DespesaDTO::new)
                 .toList();
 
-        return new ResumoDTO(lista, total);
+        return new ResumoDTO(lista, total, categoria);
     }
 
     public BigDecimal total(@NotNull List<Despesa> despesas)
